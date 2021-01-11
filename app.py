@@ -8,6 +8,7 @@ def home():
 
 @app.route('/find')
 def find_spot():
+    #index1.html을 접근하기 위해서는 /find로 접근해야한다
     return render_template('index1.html')
 
 @app.route('/create')
