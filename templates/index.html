@@ -20,6 +20,13 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
+    <!--구글폰트-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Noto+Serif+KR&display=swap" rel="stylesheet">
+
     <style>
         /*reset*/
         * {
@@ -37,13 +44,15 @@
 
 
         h1 {
-            color: black;
+            color: yellow;
             line-height: 75px;
             float: left;
+            margin-top: 5px;
         }
 
         .menu {
             float: right;
+            font-family: 'Noto Serif KR', serif;
         }
 
         .menu li {
@@ -63,6 +72,10 @@
             display: block;
         }
 
+        .pagetitle {
+            font-family: 'Bangers', cursive;
+        }
+
     </style>
 
 
@@ -71,7 +84,7 @@
 
 <body class="container">
 <div>
-    <h1><a href="#">Snap-Spot</a></h1>
+    <h1 class="pagetitle"><a href="#">Snap-Spot</a></h1>
     <nav>
         <ul class="menu">
             <li><a href="/">Home</a></li>
@@ -82,6 +95,7 @@
     </nav>
 </div>
 
+<br><br>
 <p>
 <div>
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">

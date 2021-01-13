@@ -20,6 +20,13 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
+    <!--구글폰트-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Noto+Serif+KR&display=swap" rel="stylesheet">
+
     <style>
         /*reset*/
         * {
@@ -37,13 +44,15 @@
 
 
         h1 {
-            color: black;
+            color: yellow;
             line-height: 75px;
             float: left;
+            margin-top: 5px;
         }
 
         .menu {
             float: right;
+            font-family: 'Noto Serif KR', serif;
         }
 
         .menu li {
@@ -63,6 +72,21 @@
             display: block;
         }
 
+        .pagetitle {
+            font-family: 'Bangers', cursive;
+        }
+
+        .input {
+            padding-top: 150px;
+            padding-left: 200px;
+            padding-right: 200px;
+            font-family: 'Noto Serif KR', serif;
+
+        }
+        .button{
+            float: right;
+        }
+
     </style>
 
 
@@ -71,7 +95,7 @@
 
 <body class="container">
 <div>
-    <h1><a href="#">Snap-Spot</a></h1>
+    <h1 class="pagetitle"><a href="#">Snap-Spot</a></h1>
     <nav>
         <ul class="menu">
             <li><a href="/">Home</a></li>
@@ -82,8 +106,30 @@
     </nav>
 </div>
 
-
-
+<br><br>
+<div class="input">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label"> 장소 이름 </label>
+        <input type="email" class="form-control" id="exampleFormControlInput1">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label"> 주소 등록 </label>
+        <input type="email" class="form-control" id="exampleFormControlInput1">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label"> 추천하는 이유 </label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                  placeholder="이 곳을 추천하는 나만의 이유를 적어주세요 :)"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="formFileMultiple" class="form-label"> 사진 첨부 </label>
+        <input class="form-control" type="file" id="formFileMultiple" multiple>
+    </div>
+    <div class = "button">
+        <button type="button" class="btn btn-warning"> 등록하기 </button>
+    </div>
+</div>
 
 
 </body>
+
