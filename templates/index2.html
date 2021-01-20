@@ -83,13 +83,12 @@
             font-family: 'Noto Serif KR', serif;
 
         }
-        .button{
+
+        .button {
             float: right;
         }
 
     </style>
-
-
 
 
 </head>
@@ -114,10 +113,32 @@
         <label for="exampleFormControlInput1" class="form-label"> 장소 이름 </label>
         <input type="email" class="form-control" id="exampleFormControlInput1">
     </div>
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label"> 주소 등록 </label>
-        <input type="email" class="form-control" id="exampleFormControlInput1">
+
+    <label for="exampleFormControlInput1" class="form-label"> 주소 등록 </label>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" id='sample4_postcode' aria-label="Recipient's username"
+               aria-describedby="button-addon2">
+        <button type="button" onclick="addresssearch()" class="btn btn-outline-secondary" type="button"
+                id="button-addon2"> 주소 찾기
+        </button>
     </div>
+
+    <div class="row g-2">
+        <div class="col-md">
+            <div class="form-floating">
+                <input type='text' class='form-control' id='sample4_roadAddress' id="floatingInputGrid">
+                <label for="floatingInputGrid">도로명 주소</label>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="form-floating">
+                <input type='text' class='form-control' id='sample4_jibunAddress' id="floatingInputGrid">
+                <label for="floatingInputGrid">지번 주소</label>
+            </div>
+        </div>
+    </div>
+
+<br>
     <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label"> 추천하는 이유 </label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
@@ -127,16 +148,17 @@
         <label for="formFileMultiple" class="form-label"> 사진 첨부 </label>
         <input class="form-control" type="file" id="formFileMultiple" multiple>
     </div>
-    <div class = "button">
-        <button type="button" class="btn btn-warning"> 등록하기 </button>
+    <div class="button">
+        <button type="button" class="btn btn-warning"> 등록하기</button>
     </div>
 </div>
 
 
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-    new daum.Postcode({
-        oncomplete: function(data) {
+    function addresssearch() {
+        new daum.Postcode({
+            oncomplete: function (data) {
                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
                 // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
@@ -146,15 +168,15 @@
 
                 // 법정동명이 있을 경우 추가한다. (법정리는 제외)
                 // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
                     extraRoadAddr += data.bname;
                 }
                 // 건물명이 있고, 공동주택일 경우 추가한다.
-                if(data.buildingName !== '' && data.apartment === 'Y'){
-                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                if (data.buildingName !== '' && data.apartment === 'Y') {
+                    extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
                 }
                 // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                if(extraRoadAddr !== ''){
+                if (extraRoadAddr !== '') {
                     extraRoadAddr = ' (' + extraRoadAddr + ')';
                 }
 
@@ -164,7 +186,7 @@
                 document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
 
                 // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
-                if(roadAddr !== ''){
+                if (roadAddr !== '') {
                     document.getElementById("sample4_extraAddress").value = extraRoadAddr;
                 } else {
                     document.getElementById("sample4_extraAddress").value = '';
@@ -172,12 +194,12 @@
 
                 var guideTextBox = document.getElementById("guide");
                 // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-                if(data.autoRoadAddress) {
+                if (data.autoRoadAddress) {
                     var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
                     guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
                     guideTextBox.style.display = 'block';
 
-                } else if(data.autoJibunAddress) {
+                } else if (data.autoJibunAddress) {
                     var expJibunAddr = data.autoJibunAddress;
                     guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
                     guideTextBox.style.display = 'block';
@@ -187,6 +209,7 @@
                 }
             }
         }).open();
+    }
 </script>
 
 
